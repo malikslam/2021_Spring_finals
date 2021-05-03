@@ -60,7 +60,26 @@ if __name__ == '__main__':
     intensity_var = ['icu_patients', 'hosp_patients', 'total_tests', 'new_tests']
     preventive_var = ['total_vaccinations', 'people_vaccinated', 'people_fully_vaccinated']
 
+    print("************ Hypothesis One Analysis ************")
     used_data = load_data('owid-covid-data.csv', gen_effect_var + preventive_var)
     display(used_data.head())
     data4analysis = get_last_row(used_data)
+
+    # printing out result of the analysis for Hypothesis one
     #analyze_1(data4analysis)
+
+    print("""
+    Interpretation Guide:
+    A large positive value (near to 1.0) indicates a strong positive correlation, i.e., 
+    if the value of one of the variables increases, the value of the other variable increases as well. 
+    A negative value 1.0 indicates a strong negative correlation and a value near to 0 (both positive or negative) 
+    indicates the absence of any correlation between the two variables.
+    """)
+
+    print("************ Hypothesis Two Analysis ************")
+    used_data2 = load_data('owid-covid-data.csv', gen_effect_var + intensity_var)
+    display(used_data2.head())
+    data4analysis2 = get_last_row(used_data2)
+
+    #printing out result of the analysis for Hypothesis two
+    #analyze_1(data4analysis2)
