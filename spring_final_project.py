@@ -1,5 +1,5 @@
 """
-COVID-19 Pandemic: Examining Relationship Between Its Various Factors
+COVID-19 Pandemic: Examining Its General Effects, Intensity & Vaccination
 ========================================================================================================
 * Factors:                                                                                             *
 * COVID-19 General Effect Variables: 'total_cases','new_cases', 'total_deaths','new_deaths'.           *
