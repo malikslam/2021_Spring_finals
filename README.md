@@ -51,10 +51,10 @@ These two limitions caused this study low data-size.
 
 <div class="alignRow">
 <div class="imageColumn">
-<img width="200" height="200" src = "hypo_1.JPG.jpg" >
+<img width="200" height="200" src = "hypo_1.jpg" >
 </div>
 <div class="imageColumn">
-<img width="200" height="200" src = "hypo_2.JPG.jpg" >
+<img width="200" height="200" src = "hypo_2.jpg" >
 </div>
 </div>
 
