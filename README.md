@@ -3,9 +3,9 @@
 ## IS 597: Progr Analytics & Data Process (Type II Project)
 ### <p align ="center">  By Malik Salami
 
-<img width="400" height="400" src = "covid-19img.png" >
-![alt text](covid-19img.png)
+<center> <img width="400" height="400" src = "covid-19img.png" > </center>
 <p> Data source: https://ourworldindata.org/covid-vaccinations </p>
+
 ### Variables Definition:
 <ol> COVID-19 General Effect Variables: these are COVID-19 infection indicators that could to led to death. They are 
     'total_cases','new_cases', 'total_deaths','new_deaths'. </ol>
