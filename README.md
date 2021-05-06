@@ -3,7 +3,7 @@
 ## IS 597: Progr Analytics & Data Process (Type II Project)
 ### <p align ="center">  By Malik Salami
 
-<center> <img width="400" height="400" src = "covid-19img.png" > </center>
+<p align ="center"> <img width="600" height="400" src = "covid-19img.png" > </p>
 
 ### Project Description:
 <p> The aim of this project is to get an insight from the world COVID-19 dataset through inferential analysis to measure the degree of relationship between various COVID-19 variables/factors - considering its general effects, intensity, and vaccination - to know its contribution towards reduction of its effects. 
@@ -49,12 +49,13 @@ These two limitions caused this study low data-size.
 
 ### Preliminary Conclusion:
 
+
 <div class="alignRow">
 <div class="imageColumn">
-<img width="200" height="200" src = "hypo_1.jpg" >
+<img width="500" height="400" src = "hypo_1.JPG" >  <img width="400" height="400" src = "hypo_2.JPG" >
 </div>
 <div class="imageColumn">
-<img width="200" height="200" src = "hypo_2.jpg" >
+
 </div>
 </div>
 
@@ -64,7 +65,7 @@ Therefore, H1 is rejected which says:there is no significant relationship betwee
 <p>There are strong indications in the above analysis that COVID-19 Intensity Variables and COVID-19 General Effect Variables are strongly related except for new cases and COVID-19 General Effect Variables that are weakly correlated. Nevertheless, total_vaccinations have been strongly correlated all through.
 Therefore, H2 is rejected which says:there is no significant relationship between COVID-19 Intensitive Variables and COVID-19 General Effect Variable.</p>
 
-![GitHub Logo] (model_res.jpg)
+<img width="1000" height="300" src = "model_res.JPG" >
 <p> <ol>total_cases:</ol>
 The model is significant: having F-Statistics(1548), p < 0.0005.The model explains 99.4% of the variance (Adjusted R square = 0.994). According to the information on the model all the independent variables: hosp_patients, new_tests, and total_vaccination are significant predictors for total_cases.</p> 
 
