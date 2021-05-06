@@ -183,3 +183,79 @@ if __name__ == '__main__':
 
     #printing out result of the analysis for Hypothesis two
     #analyze_1(data4analysis2)
+
+    """
+    Taking the Analysis Further (Multiple/Mutivariate Regression Model):
+    The Multiple Regression Analysis will  explain the relationship between the COVID-19 General Effect 
+    Variables, and both of COVID-19 Intensive Variables and COVID-19 Preventive Variables.
+    
+        Factors to Consider in Multiple Regression Model:
+    - Absence of Multicollinearity in the Model
+    - Check for the normality of the residuals
+    - Checking the Mean of the Residuals Equals 0
+    """
+    used_data_ = load_data('owid-covid-data.csv', gen_effect_var + intensive_var + preventive_var)
+    used_data3 = get_last_row(used_data_)
+    dependent_var = used_data3[used_data3.columns[4:8]]
+    independent_var = used_data3[used_data3.columns[8:]]
+
+    # Factor I: Testing multicollinearity
+    analyze_1(independent_var)
+
+    """
+    Variance Inflation Factor (VIF): 
+    VIF is a measure of how much a particular variable is contributing to the standard error in the regression model. 
+    When significant multicollinearity exists, the variance inflation factor will be huge for the variables in the calculation.
+    From the correlation table and the heat map 'icu_patients','total_tests','people_fully_vaccinated', 'people_vaccinated'
+    are highly correlated some other explanatory variable e.g. 'icu_patients' and 'hosp_patients' are highly correlated, 
+    so to avoid duplicate 'icu_patients' is pulled out a,ong with others
+    """
+
+    # Calling variance_inflation_factor - check_var_inf_fact to check if we pulling down the right variables.
+    drop_var = ['icu_patients', 'total_tests', 'people_fully_vaccinated', 'people_vaccinated']
+    check_var_inf_fact(independent_var, drop_var)
+
+    """
+    Data show that After Variance_Inflation_Factor we retaining only 
+    ['hosp_patients', 'news_test', 'total_vaccinations']. I am reloading the data to expand the coverage.
+    """
+
+    remain_var = ['hosp_patients', 'new_tests', 'total_vaccinations']
+    dependent_var2_ = list(dependent_var.columns[0:])
+    used_data4 = load_data('owid-covid-data.csv', dependent_var2_ + remain_var)
+    used_data4 = get_last_row(used_data4)
+
+    print('size of the data before dropping multicollineared variables:', used_data3.shape)
+    print('size of the data after dropping multicollineared variables:', used_data4.shape)
+    dependent_var2 = used_data4[used_data4.columns[4:8]]
+    independent_var2 = used_data4[used_data4.columns[8:]]
+
+    # Recheck the Multicollinearity
+    analyze_1(independent_var2)
+
+    """
+    Building Multiple Regression Model
+    Statsmodel module was used to create Model for each instance of the dependent variables 
+    (General Effect Variables) with the other remaining independent variables (hosp_patients, new_tests, total_vaccinations).
+    """
+    dep_var = list(dependent_var2.columns)
+    store_model = []
+    for items in dep_var:
+        print('OLS Regression Model Results for ', items)
+        model_OLS = create_OLS_Model(dependent_var2[items], independent_var2)
+        store_model.append(model_OLS)
+        display(model_OLS.summary())
+
+    """
+    Factor II: Checking for the Normality of the Residuals
+    Checking if residuals are normally distributed i.e. check how the data hugs around the line
+    Factor III: Checking the Mean of the Residuals Equals 0
+    """
+
+    for items in range(len(dep_var)):
+        print("The normality of the residual & The mean of the residuals for ", dep_var[items])
+        sm.qqplot(store_model[items].resid, line='s')
+        plt.show()
+        # check that the mean of the residuals is approx. 0.
+        mean_residuals = sum(store_model[items].resid) / len(store_model[items].resid)
+        print("The mean of the residuals is {:.4}".format(mean_residuals))
