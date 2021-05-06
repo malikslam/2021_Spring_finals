@@ -16,13 +16,10 @@ import matplotlib.pyplot as plt
 from IPython.display import display
 
 import statsmodels.api as sm
-from statsmodels.stats import diagnostic as diag
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 
 from sklearn.linear_model import LinearRegression
-#from sklearn.model_selection import train_test_split
-#from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
-#%matplotlib inline
+
 
 def load_data(filename, col: list) -> pd.DataFrame:
     """
@@ -161,8 +158,12 @@ if __name__ == '__main__':
     preventive_var = ['total_vaccinations', 'people_vaccinated', 'people_fully_vaccinated']
 
     print("************ Hypothesis One Analysis ************")
+
+    # load data for General Effect Variables & Preventive Variables
     used_data = load_data('owid-covid-data.csv', gen_effect_var + preventive_var)
     display(used_data.head())
+
+    # Get the latest record for each countries
     data4analysis = get_last_row(used_data)
 
     # printing out result of the analysis for Hypothesis one
@@ -177,8 +178,12 @@ if __name__ == '__main__':
     """)
 
     print("************ Hypothesis Two Analysis ************")
+
+    # load data for General Effect Variables & Intensive Variables
     used_data2 = load_data('owid-covid-data.csv', gen_effect_var + intensive_var)
     display(used_data2.head())
+
+    # Get the latest record for each countries
     data4analysis2 = get_last_row(used_data2)
 
     #printing out result of the analysis for Hypothesis two
